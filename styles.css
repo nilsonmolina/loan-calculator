@@ -89,14 +89,36 @@ body {
 }
 .results {
     width: 690px;
+    margin-bottom: 50px;
+    -webkit-animation: pageLoad ease 1s;
+    -moz-animation: pageLoad ease 1s;
+    -o-animation: pageLoad ease 1s;
+    animation: pageLoad ease 1s;
 }
 .results table {
     width: 100%;
 }
-
 .results table th {
     border-bottom: 1px solid black;
     text-align: left;
+}
+.results tr {
+  -webkit-animation: pageLoad ease 1s;
+  -moz-animation: pageLoad ease 1s;
+  -o-animation: pageLoad ease 1s;
+  animation: pageLoad ease 1s;
+}
+.results tr:nth-child(even) {
+
+}
+.results tr:nth-child(odd) {
+    font-weight: 600;
+}
+.results tr.header {
+
+}
+.results td {
+  padding: 5px 0;
 }
 .results h2 {
     color: #02ccba;;
