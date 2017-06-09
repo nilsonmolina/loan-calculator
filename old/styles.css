@@ -1,49 +1,70 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #FFF;
-    color: #525c65;
 }
+
 .container {
     height: 350px;
     width: 100%;
-    background-image: linear-gradient(to bottom right, #02b3e4, #02ccba);
-    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+    background-image: linear-gradient(#02b3e4, #02ccba);
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .calculator {
-    background: #FFF;
+    height: 400px;
+    width: 800px;
+    margin: 100px auto;
+    padding: 0;
     box-shadow: 5px 5px 25px 0px rgba(46,61,73,0.2);
-    border-radius: 0.375rem;
-    transition: all 0.3s ease;
-    padding: 40px;
-    max-width: 620px;
+    display: flex;
 
-    -webkit-animation: pageLoad ease 1s;
-    -moz-animation: pageLoad ease 1s;
-    -o-animation: pageLoad ease 1s;
-    animation: pageLoad ease 1s;
+    -webkit-animation: pageLoad ease 0.75s;
+    -moz-animation: pageLoad ease 0.75s;
+    -o-animation: pageLoad ease 0.75s;
+    animation: pageLoad ease 0.75s;
 }
+.calculator .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(50% - 100px);
+    padding: 50px;
+    background: #FFF;
+}
+.calculator .right {
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    width: calc(50% - 100px);
+    padding: 50px;
+    color: #fff;
+    /*background-color: #02b3e4;*/
+    background: linear-gradient(160deg, #1BBAE6 0%, #02b3e4 100%);
+    /*background-image: radial-gradient(#1BBAE6, #02b3e4);*/
+}
+.calculator .right .results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.calculator h4,
+.calculator h3,
 .calculator h2 {
-    color: #02b3e4;
-    margin-top: -10px;
-    margin-bottom: 0;
+    margin: 5px;
 }
-.calculator .small {
-    font-size: 0.9rem;
-    max-width: 600px;
-    margin-bottom: 10px;
+.calculator h1 {
+    margin-top: 0;
 }
+/*Inputs*/
 .calculator input {
     text-transform: capitalize;
+    margin: 10px 0;
+    display: block;
     outline: none;
     vertical-align: top;
-    height: 40px;
+    height: 50px;
     border: 1px solid #dbe2e8;
-    padding: 0 15px;
+    padding: 0 25px;
+    font-size: 0.875rem;
     border-radius: 0.25rem;
     transition: box-shadow 0.3s ease, border 0.3s ease;
 }
@@ -54,76 +75,29 @@ body {
     border-color: #02b3e4;
     box-shadow: 5px 5px 10px 0 rgba(46,61,73,0.05);
 }
-#principal {
-    max-width: 250px;
-}
-#interest {
-    max-width: 100px;
-}
-#time {
-    max-width: 100px;
-}
-#button {
-    width: 200px;
+/*Button*/
+.calculator button {
+    margin: 10px 0;
+    height: 3rem;
+    padding: 0 0.5rem;
     text-transform: uppercase;
-    padding: 0 10px;
-    height: 40px;
+    border-radius: 0.25rem;
+    cursor: pointer;
     color: #fff;
     background-color: #02b3e4;
-    border: none;
-    border-radius: 3px;
+    border: 0.125rem solid transparent;
     box-shadow: 8px 10px 20px 0px rgba(46,61,73,0.15);
     transition: all 0.3s ease;
-    cursor: pointer;
-    user-select: none;
 }
-#button:hover, #button:focus {
-    background: #02ccba;
+.calculator button:hover {
     box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
-    outline:0;
 }
-.wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.results {
-    width: 690px;
-}
-.results table {
-    width: 100%;
+.calculator button:active {
+    border: none;
 }
 
-.results table th {
-    border-bottom: 1px solid black;
-    text-align: left;
-}
-.results h2 {
-    color: #02ccba;;
-}
-
-.hidden { display: none;}
-
-@media screen and (max-width: 768px) {
-    .container {
-        height: 425px;
-    }
-    .calculator .small {
-        max-width: 205px;
-    }
-    .calculator input, .calculator button {
-        display: block;
-        margin: 5px 0;
-    }
-    #principal {
-        max-width: 100%;
-    }
-    #interest {
-        max-width: 100%;
-    }
-    #time {
-        max-width: 100%;
-    }
+.hidden {
+    display: none;
 }
 
 /*------------------------ CSS3 ANIMATION KEYFRAMES ------------------------*/
