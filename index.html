@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Car Loan Calculator</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Open+Sans:400,400i,600,700" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="banner"></div>
+
+        <div class="container">
+            <div class="calculator hidden">
+                <div class="left">
+                    <input type="number" id="principal" placeholder="loan amount"></input>
+                    <input type="number" id="interest" placeholder="interest rate"></input>
+                    <input type="number" id="time" placeholder="loan duration in months"></input>
+                    <button type="button" id="button">Calculate</button>
+                </div>
+                <div class="right">
+                    <h2>Simple Loan Calculator</h3>
+                    <small></small>
+                    <div class="results">
+                        <div>
+                            <h5>Monthly Payments</h5>
+                            <h4 id="monthly">$0.00</h4>
+                        </div>
+                        <div>
+                            <h5>Total Due</h5>
+                            <h4 id="total">$0.00</h4>
+                        </div>
+                        <div>
+                            <h5>Cost of Loan</h3>
+                            <h4 id="cost">$0.00</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="app.js"></script>
+    </body>
+</html>
