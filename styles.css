@@ -47,6 +47,9 @@ body {
     border-radius: 0.25rem;
     transition: box-shadow 0.3s ease, border 0.3s ease;
 }
+.calculator input.error, .calculator input.error:focus {
+    border: 1px solid red;
+}
 .calculator input:hover {
     box-shadow: 5px 5px 10px 0 rgba(46,61,73,0.05);
 }
