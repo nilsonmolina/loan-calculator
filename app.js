@@ -63,7 +63,6 @@ var LoanController = (function() {
       calculateLoan();
       outputResults();
       dom.deselectAll();
-
       //this causes a bug where duplicate entries appear if user taps 'enter' on the button
       //dom.loan.select();
     });
@@ -100,7 +99,7 @@ var LoanController = (function() {
   };
 
   var outputResults = function() {
-    var row = dom.table.insertRow(1);
+    var row = dom.table.getElementsByTagName('tbody')[0].insertRow(0);
 
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);

@@ -111,10 +111,7 @@ body {
   -o-animation: pageLoad ease 1s;
   animation: pageLoad ease 1s;
 }
-.results tr:nth-child(even) {
-
-}
-.results tr:nth-child(odd):not(.header) {
+.results tr:nth-child(even):not(.header) {
     background: #F6F6F6;
 }
 .results tr.header {
@@ -130,20 +127,72 @@ body {
 .hidden { display: none;}
 
 @media screen and (max-width: 768px) {
-    .container {
-        height: 425px;
-    }
-    .calculator .small {
-        max-width: 200px;
-    }
-    .calculator input, .calculator button {
-        display: block;
-        margin: 5px 0;
-    }
-    #principal, #interest, #time, #button {
-      max-width: 100%;
-      width: 200px;
-    }
+  .container {
+      height: 425px;
+  }
+  .calculator .small {
+      max-width: 200px;
+  }
+  .calculator input, .calculator button {
+      display: block;
+      margin: 5px 0;
+  }
+  #principal, #interest, #time, #button {
+    max-width: 100%;
+    width: 200px;
+  }
+  .results {
+    margin: 0 15px 50px 15px;
+  }
+
+}
+
+@media screen and (max-width: 580px) {
+  /*------------------------ RESPONSIVE TABLE ------------------------*/
+  .results {
+    margin: 0 15px 50px 15px;
+  }
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  .results thead tr {
+    display: none;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .results tr { border: 1px solid #ccc; }
+
+  .results td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 30%;
+  }
+
+  .results td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
+  Label the data
+  */
+  .results td:nth-of-type(1):before { content: "Loan Details"; font-weight: 600; }
+  .results td:nth-of-type(2):before { content: "Payments"; font-weight: 600; }
+  .results td:nth-of-type(3):before { content: "Total Due"; font-weight: 600; }
+  .results td:nth-of-type(4):before { content: "Cost of Loan"; font-weight: 600; }
 }
 
 /*------------------------ CSS3 ANIMATION KEYFRAMES ------------------------*/
