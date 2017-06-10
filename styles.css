@@ -45,7 +45,7 @@ body {
     border: 1px solid #dbe2e8;
     padding: 0 15px;
     border-radius: 0.25rem;
-    transition: box-shadow 0.3s ease, border 0.3s ease;
+    transition: all 0.3s ease;
 }
 .calculator input.error, .calculator input.error:focus {
     border: 1px solid red;
@@ -134,20 +134,15 @@ body {
         height: 425px;
     }
     .calculator .small {
-        max-width: 205px;
+        max-width: 200px;
     }
     .calculator input, .calculator button {
         display: block;
         margin: 5px 0;
     }
-    #principal {
-        max-width: 100%;
-    }
-    #interest {
-        max-width: 100%;
-    }
-    #time {
-        max-width: 100%;
+    #principal, #interest, #time, #button {
+      max-width: 100%;
+      width: 200px;
     }
 }
 
