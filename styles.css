@@ -67,7 +67,7 @@ body {
     max-width: 100px;
 }
 #button {
-    width: 200px;
+    width: 180px;
     text-transform: uppercase;
     padding: 0 10px;
     height: 40px;
@@ -114,8 +114,8 @@ body {
 .results tr:nth-child(even) {
 
 }
-.results tr:nth-child(odd) {
-    font-weight: 600;
+.results tr:nth-child(odd):not(.header) {
+    background: #F6F6F6;
 }
 .results tr.header {
 

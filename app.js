@@ -13,32 +13,64 @@ var LoanController = (function() {
     rate: document.getElementById('interest'),
     term: document.getElementById('time'),
     calculatorDiv: document.querySelector('.calculator'),
-    button: document.getElementById('button')
+    button: document.getElementById('button'),
+
+    clearErrors: function() {
+      dom.loan.classList.remove('error');
+      dom.rate.classList.remove('error');
+      dom.term.classList.remove('error');
+    },
+    isValid: function() {
+      return document.querySelector('.error') === null;
+    },
+    deselectAll: function() {
+      dom.loan.blur();
+      dom.rate.blur();
+      dom.term.blur();
+      dom.button.blur();
+    }
+  };
+  var validate = {
+    loan: function() {
+      isNaN(parseFloat(dom.loan.value)) ? dom.loan.classList.add('error') : dom.loan.classList.remove('error');
+    },
+    rate: function() {
+      isNaN(parseFloat(dom.rate.value)) ? dom.rate.classList.add('error') : dom.rate.classList.remove('error');
+    },
+    term: function() {
+      isNaN(parseFloat(dom.term.value)) ? dom.term.classList.add('error') : dom.term.classList.remove('error');
+    },
+    data: function() {
+      if (isNaN(data.term)){
+        dom.term.classList.add('error');
+        dom.term.select();
+      } if (isNaN(data.rate)){
+        dom.rate.classList.add('error');
+        dom.rate.select();
+      } if (isNaN(data.loan)){
+        dom.loan.classList.add('error');
+        dom.loan.select();
+      }
+    }
   };
 
   var bindEvents = function() {
     dom.button.addEventListener('click', function() {
       getUserInput();
-      // Check for errors.
-      if (document.querySelector('.error') !== null) {
+      if (!dom.isValid()) {
         return;
       }
       calculateLoan();
       outputResults();
-      dom.loan.select();
+      dom.deselectAll();
+
+      //this causes a bug where duplicate entries appear if user taps 'enter' on the button
+      //dom.loan.select();
     });
 
-    dom.loan.addEventListener('focusout', function() {
-      isNaN(parseFloat(dom.loan.value)) ? dom.loan.classList.add('error') : dom.loan.classList.remove('error');
-    });
-
-    dom.rate.addEventListener('focusout', function() {
-      isNaN(parseFloat(dom.rate.value)) ? dom.rate.classList.add('error') : dom.rate.classList.remove('error');
-    });
-
-    dom.term.addEventListener('focusout', function() {
-      isNaN(parseFloat(dom.term.value)) ? dom.term.classList.add('error') : dom.term.classList.remove('error');
-    });
+    dom.loan.addEventListener('focusout', validate.loan);
+    dom.rate.addEventListener('focusout', validate.rate);
+    dom.term.addEventListener('focusout', validate.term);
 
     dom.loan.addEventListener('keyup', checkIfEnter);
     dom.rate.addEventListener('keyup', checkIfEnter);
@@ -47,30 +79,13 @@ var LoanController = (function() {
   };
 
   var getUserInput = function() {
-    clearErrors();
+    dom.clearErrors();
+
     data.loan = parseFloat(dom.loan.value);
     data.rate = parseFloat(dom.rate.value);
     data.term = parseFloat(dom.term.value);
-    validateData();
-  };
 
-  var validateData = function() {
-    if (isNaN(data.term)){
-      dom.term.classList.add('error');
-      dom.term.select();
-    } if (isNaN(data.rate)){
-      dom.rate.classList.add('error');
-      dom.rate.select();
-    } if (isNaN(data.loan)){
-      dom.loan.classList.add('error');
-      dom.loan.select();
-    }
-  };
-
-  var clearErrors = function() {
-    dom.loan.classList.remove('error');
-    dom.rate.classList.remove('error');
-    dom.term.classList.remove('error');
+    validate.data();
   };
 
   var calculateLoan = function() {
@@ -85,7 +100,7 @@ var LoanController = (function() {
   };
 
   var outputResults = function() {
-    var row = dom.table.insertRow(1); //inserts row at the beginning of the table, after header row
+    var row = dom.table.insertRow(1);
 
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
